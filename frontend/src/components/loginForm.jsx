@@ -17,7 +17,7 @@ const Login = ({ username, setUsername, setRsaKeys, socket, isLogin}) => {
 
   return (
     <div>
-      {isLogin && (<label htmlFor="">De:</label>)}
+      {isLogin && (<label htmlFor="">De: </label>)}
       <input
         className='inputDest'
         type="text"

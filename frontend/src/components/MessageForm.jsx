@@ -9,7 +9,7 @@ const MessageForm = ({ username, receiver, setMessages, socket }) => {
   const [selectedFile, setSelectedFile] = useState(null); 
 
   const sendMessage = async () => {
-    if (!message && !selectedFile) return; // no hay nada que enviar
+    if (!message && !selectedFile) return; // Si no hay nada que enviar
   
     // Enviar mensaje si hay
     if (message) {
@@ -45,7 +45,7 @@ const MessageForm = ({ username, receiver, setMessages, socket }) => {
       setMessage("");
     }
   
-    // Enviar archivo si hay
+    // Enviar archivo si se selecciona
     if (selectedFile) {
       const aesKey = await generateAESKey();
       const aesRaw = await crypto.subtle.exportKey("raw", aesKey);
@@ -54,6 +54,15 @@ const MessageForm = ({ username, receiver, setMessages, socket }) => {
       const res = await fetch(`http://localhost:5000/get_public_key/${receiver}`);
       const { public_key } = await res.json();
       const encryptedKey = await encryptAESKey(aesRaw, public_key);
+      console.log("--- Encriptación del Archivo ---");
+      console.log("Nombre del archivo:", selectedFile.name);
+      console.log("Tipo del archivo:", selectedFile.type);
+      console.log("Clave AES (ArrayBuffer):", aesRaw);
+      console.log("Clave AES (Base64):", bufferToBase64(aesRaw));
+      console.log("Vector de Inicialización (IV, ArrayBuffer):", encryptedFile.iv);
+      console.log("Archivo Encriptado (ciphertext, ArrayBuffer):", encryptedFile.ciphertext);
+      console.log("Clave AES Cifrada con RSA (ArrayBuffer):", encryptedKey);
+      console.log("--- Fin de Encriptación del Archivo ---");
   
       socket.emit("send_file", {
         sender: username,

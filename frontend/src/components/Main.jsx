@@ -22,6 +22,10 @@ function Main() {
       const { sender, ciphertext, encrypted_key, nonce } = data;
 
       try {
+        console.log(`Mensaje recibido de ${sender}`);
+        console.log("Texto cifrado:", ciphertext);
+        console.log("Nonce (IV):", nonce);
+
         const encryptedKeyBuf = base64ToBuffer(encrypted_key);
         const nonceBuf = base64ToBuffer(nonce);
         const ciphertextBuf = base64ToBuffer(ciphertext);

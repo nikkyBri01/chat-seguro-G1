@@ -15,13 +15,13 @@ const Chat = ({ messages, username }) => {
               <div className="message-bubble">
                 <strong>{msg.from || 'Tú'}:</strong><br />
                 <a href={msg.fileURL} download={msg.fileName}>{msg.fileName}</a>
-                <span className="">{msg.time}</span>
+                <span className="message-meta">{msg.time}</span>
               </div>
             </div>
           ) : (
             <div key={index} className={`message ${messageClass}`}>
               <div className="message-bubble">
-                <strong>{msg.from}:</strong> {msg.text}
+                <strong>{msg.from}:</strong> {msg.text} 
                 <span className="message-meta">{msg.time}</span>
               </div>
             </div>
