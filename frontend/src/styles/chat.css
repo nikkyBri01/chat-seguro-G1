@@ -11,7 +11,7 @@
     flex-direction: column;
     gap: 10px;
     overflow-y: auto;
-    max-height: calc(100vh - 160px); /* ajusta según tu layout */
+    max-height: calc(100vh - 160px);
     padding-bottom: 10px;
   }
   
@@ -31,7 +31,7 @@
   }
   
   .message-bubble {
-    background-color: #2c2c2c; /* gris oscuro */
+    background-color: #2c2c2c; 
     color: #fff;
     padding: 8px 12px;
     border-radius: 16px;
@@ -43,7 +43,7 @@
   }
   
   .message-sent .message-bubble {
-    background-color: #091f0a; /* verde tenue */
+    background-color: #091f0a; 
     color: #fff;
   }
   

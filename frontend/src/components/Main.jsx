@@ -71,37 +71,40 @@ function Main() {
   return (
     <div className='main'>
       <ToastContainer />
-      <Login 
-        username={username} 
-        setUsername={setUsername} 
-        setRsaKeys={setRsaKeys} 
-        socket={socket} 
-        isLogin = {!!rsaKeys}
-      />
-      {rsaKeys && (
-        <>
-          <input
+      <div className="input-container">
+        <Login 
+          username={username} 
+          setUsername={setUsername} 
+          setRsaKeys={setRsaKeys} 
+          socket={socket} 
+          isLogin={!!rsaKeys}
+        />
+        {rsaKeys && (<label htmlFor="">Para: </label>)}
+        {rsaKeys && (
+          <input 
+            className='inputDest'
             type="text"
             placeholder="Destinatario"
             value={receiver}
             onChange={e => setReceiver(e.target.value)}
           />
-          <div className="chat-wrapper">
-            <div className="chat-box">
-              <Chat 
-                messages={messages} 
-              />
-            </div>
-            <div className="message-form-container">
-              <MessageForm
-                username={username}
-                receiver={receiver}
-                setMessages={setMessages}
-                socket={socket}
-              />
-            </div>
+        )}
+      </div>
+
+      {rsaKeys && (
+        <div className="chat-wrapper">
+          <div className="chat-box">
+            <Chat messages={messages} />
           </div>
-        </>
+          <div className="message-container">
+            <MessageForm
+              username={username}
+              receiver={receiver}
+              setMessages={setMessages}
+              socket={socket}
+            />
+          </div>
+        </div>
       )}
     </div>
   );

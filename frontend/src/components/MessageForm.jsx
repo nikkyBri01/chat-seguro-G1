@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import { generateAESKey, encryptAESKey, encryptMessageWithAES, encryptFileWithAES, bufferToBase64 }  from '../assets/crypto';
 import Files from './Files';
-import '../styles/MessageForm.css';
-
+import '../styles/MessageForm.css'; 
 
 const MessageForm = ({ username, receiver, setMessages, socket }) => {
   const [message, setMessage] = useState('');
@@ -81,22 +80,23 @@ const MessageForm = ({ username, receiver, setMessages, socket }) => {
       setSelectedFile(null); // Limpiar archivo tras envío
     }
   };
+  
   return (
     <div className='message-form-container'>
+      
       <input
-        className="message-input"
         type="text"
         value={message}
         placeholder="Escribe un mensaje"
         onChange={e => setMessage(e.target.value)}
       />
+
       <div className="file-upload">
         <Files
               setSelectedFile={setSelectedFile}
         />
       </div>
-      
-      <button className="send-button" onClick={sendMessage} disabled={!message && !selectedFile}> Enviar </button>    
+      <button className='send-button' onClick={sendMessage} disabled={!message && !selectedFile}><i className="fa fa-paper-plane" style={{ fontSize: '24px', color: '#0f3d11' }}></i></button>
     </div>
   );
 };
